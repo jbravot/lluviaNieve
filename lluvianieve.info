@@ -1,0 +1,15 @@
+; $Id$
+name = Lluvia de Nieve
+description = "Módulo que genera una lluvia de nieve en el sitio web."
+core = 7.x
+
+package = Lluvia de Nieve
+
+configure = admin/lluvia-nieve
+files[] = lluvianieve.module
+
+; Information added by drupal.org packaging script on 2013-01-14
+version = "7.x-2.2"
+core = "7.x"
+project = "Lluvia de Nieve"
+datestamp = "1358172127"

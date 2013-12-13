@@ -1,0 +1,92 @@
+<?php
+
+/**
+ * Lluvia de Nieve
+ */
+
+/**
+ * Implements hook_help().
+ */
+function lluvianieve_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#lluvianieve':
+      return '<p>' . t('Módulo que genera una lluvia de nieve en el sitio web.')
+         . '</p>';
+  }
+  return '';
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function lluvianieve_block_info() {
+  $blocks['lluvia_nieve'] = array(
+    'info' => t('Bloque para Lluvia de Nieve'),
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_menu().
+ */
+function lluvianieve_menu(){
+
+	$items['admin/lluvia-nieve'] = array(
+		'title' => t('LLuvia Nieve'),
+		'description' => t('Configuración.'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array('lluvianieve_configuracion'),
+		'access arguments' => array('administer site configuration'),
+		'file' => 'lluvianieve.admin.inc',
+		'weight' => -3,
+	);
+
+	return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function lluvianieve_permission() {
+  return array(
+    'administer lluvianieve' => array(
+      'title' => t('Administrador LLuvia Nieve'),
+      'description' => t('Modifica la configuración de LLuvia Nieve.'),
+    ),
+  );
+}
+
+/**
+ * Implementa hook_block_view().
+ */
+function lluvianieve_block_view($delta = '') {
+  switch ($delta) {
+    case 'lluvia_nieve':
+      $block['content'] = lluvianieve_lluvia();
+      return $block;
+  }
+  break;
+}
+
+/**
+ * Implementa hook_theme().
+ */
+function lluvianieve_theme() {
+  return array(
+    'lluvianieve_lluvia' => array(
+      'template' => 'lluvia-nieve',
+    ),
+  );
+}
+
+function lluvianieve_lluvia() {
+  $variables = array(
+    'position' => variable_get('lluvianieve_position', FALSE),
+	'minsize' => variable_get('lluvianieve_minsize', 10),
+	'maxsize' => variable_get('lluvianieve_maxsize', 20),
+	'frequency' => variable_get('lluvianieve_frequency', 500),
+	'color' => variable_get('lluvianieve_color', '#fff'),
+	'active' => variable_get('lluvianieve_activar_smartphone', FALSE),
+  );
+  return theme('lluvianieve_lluvia', $variables);
+}
