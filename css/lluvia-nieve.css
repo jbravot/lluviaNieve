@@ -1,10 +1,10 @@
-#flake{ z-index: 400}
+#flake{ z-index: 500}
 .navidad #lluvia-nieve{
 	background: url(../images/nieve.png) repeat-x center center rgba(0, 0, 0, 0);
 	position: absolute;
 	width: 100%;
 	height: 50px;
-	z-index: 400;
+	z-index: 500;
 	top: -15px;
 	left: 0;
 }

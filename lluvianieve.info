@@ -9,7 +9,7 @@ configure = admin/lluvia-nieve
 files[] = lluvianieve.module
 
 ; Information added by drupal.org packaging script on 2013-01-14
-version = "7.x-1.5"
+version = "7.x-2.2"
 core = "7.x"
 project = "Lluvia de Nieve"
 datestamp = "1358172127"
