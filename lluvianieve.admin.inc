@@ -9,8 +9,9 @@
  */
 function lluvianieve_configuracion() {
 
-  drupal_add_js(drupal_get_path('module', 'jmaps') .'/js/colorPicker/jquery.colorPicker.min.js');
-  drupal_add_css(drupal_get_path('module', 'jmaps') .'/js/colorPicker/colorPicker.css');
+  drupal_add_js(drupal_get_path('module', 'lluvianieve') .'/js/colorPicker/jquery.colorPicker.min.js');
+  drupal_add_css(drupal_get_path('module', 'lluvianieve') .'/js/colorPicker/colorPicker.css');
+  drupal_add_js(drupal_get_path('module', 'lluvianieve') .'/js/lluvia-nieve-admin.js');
   
   $form['info'] = array(
     '#type' => 'fieldset',
@@ -54,7 +55,6 @@ function lluvianieve_configuracion() {
     '#default_value' => variable_get('lluvianieve_color', '#fff'), 
     '#description' => t('Color del copo de nieve, color predeterminado blanco.'),
 	'#required' => TRUE,
-	'#suffix' => '<script>(function ($){$(document).ready(function(){$("#edit-lluvianieve-color").colorPicker();});})(jQuery)</script>',	
   );
   $form['info']['lluvianieve_activar_smartphone'] = array(
     '#title' => t('Activar en dispositivos m&oacute;viles'),  

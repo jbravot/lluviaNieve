@@ -7,10 +7,10 @@
  */
 (function($){
 	$(document).ready(function(){
-		$(document.body).append('<div id="lluvia-nieve"></div>');
+		$(document.body).append('<div id="lluvia-nieve" '+Drupal.settings.lluviaNieve.position+'></div>');
 		$(document.body).addClass('navidad');
-		if(! /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-			$.fn.snow({ minSize: 10, maxSize: 20, newOn: 1000, flakeColor: '#FFF' });
+		if(! /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || Drupal.settings.lluviaNieve.active_smart) {
+			$.fn.snow({ minSize: Drupal.settings.lluviaNieve.minsize, maxSize: Drupal.settings.lluviaNieve.maxsize, newOn: Drupal.settings.lluviaNieve.frequency, flakeColor: Drupal.settings.lluviaNieve.color });
 		}
 	});
 })(jQuery);
