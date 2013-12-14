@@ -1,4 +1,4 @@
-lluviaNieve
+Lluvia de Nieve
 ===========
 
 Módulo de Drupal 7 que genera una lluvia de nieve en el sitio web.

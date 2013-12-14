@@ -1,20 +1,17 @@
 <?php
+
+$active_smart = ($active ? true : false);
+$position = ($position ? "style='position:fixed;'" : '');
 drupal_add_js(drupal_get_path('module', 'lluvianieve') .'/js/snow.js');
+drupal_add_js(array('lluviaNieve' => array(
+	'active_smart' => $active_smart,
+	'position' => $position,
+	'minsize' => $minsize,
+	'maxsize' => $maxsize,
+	'frequency' => $frequency,
+	'color' => $color,
+)), 'setting');
+drupal_add_js(drupal_get_path('module', 'lluvianieve') .'/js/lluvia-nieve.js');
 drupal_add_css(drupal_get_path('module', 'lluvianieve') .'/css/lluvia-nieve.css');
 
-$active_smart = ($active ? true : '! /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ')
-	
 ?>
-<script>
-(function($){
-	$(document).ready(function(){
-		var position = "<?php echo ($position ? "style='position:fixed;'" : '')?>";
-		$(document.body).append('<div id="lluvia-nieve" '+position+'></div>');
-		$(document.body).addClass('navidad');
-		
-		if(<?php echo $active_smart ?>) {
-			$.fn.snow({ minSize: <?php echo $minsize; ?>, maxSize: <?php echo $maxsize; ?>, newOn: <?php echo $frequency; ?>, flakeColor: '<?php echo $color; ?>' });
-		}
-	});
-})(jQuery);
-</script>
